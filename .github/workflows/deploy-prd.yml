@@ -19,4 +19,4 @@ jobs:
     # Deploy the code to Linode VM ubuntu-randomeme-prod
     - name: Deploy to Linode VM ubuntu-randomeme-prod
       run: |
-        sudo cp -r ../randomeme/* /home/randomeme/my-meme-app/
+        cp -r ../randomeme/* /opt/randomeme/
