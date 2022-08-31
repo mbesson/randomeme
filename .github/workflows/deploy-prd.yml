@@ -1,0 +1,22 @@
+name: CD_LINODE_PRD
+
+# Runs when a new version is released
+on:
+  push:
+    branches: [master]
+
+# This workflow contains two jobs "deploy-local" and "deploy-adls"
+jobs:
+
+  deploy-local:
+    # The type of runner that the job will run on
+    runs-on: prod
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Deploy the code to Linode VM ubuntu-randomeme-prod
+    - name: Deploy to Linode VM ubuntu-randomeme-prod
+      run: |
+        cp -r ../randomeme/* /home/randomeme/my-meme-app/
