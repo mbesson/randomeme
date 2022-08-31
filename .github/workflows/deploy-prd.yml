@@ -19,4 +19,5 @@ jobs:
     # Deploy the code to Linode VM ubuntu-randomeme-prod
     - name: Deploy to Linode VM ubuntu-randomeme-prod
       run: |
+        rm -rf /opt/randomeme/*
         cp -r ../randomeme/* /opt/randomeme/
