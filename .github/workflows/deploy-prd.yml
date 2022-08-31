@@ -19,8 +19,8 @@ jobs:
     # Deploy the code to Linode VM ubuntu-randomeme-prod
     - name: Deploy to Linode VM ubuntu-randomeme-prod
       run: |
-        systemctl stop meme.service
+        sudo systemctl stop meme.service
         rm -rf /opt/randomeme/*
         cp -r ../randomeme/* /opt/randomeme/
-        systemctl daemon-reload
-        systemctl start meme.service
+        sudo systemctl daemon-reload
+        sudo systemctl start meme.service
