@@ -19,5 +19,8 @@ jobs:
     # Deploy the code to Linode VM ubuntu-randomeme-prod
     - name: Deploy to Linode VM ubuntu-randomeme-prod
       run: |
+        systemctl stop api_adf.service
         rm -rf /opt/randomeme/*
         cp -r ../randomeme/* /opt/randomeme/
+        systemctl daemon-reload
+        systemctl start api_adf.service
