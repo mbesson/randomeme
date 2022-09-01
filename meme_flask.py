@@ -7,11 +7,11 @@ import urllib.request
 
 app = Flask(__name__)
 
-class FlaskApp:
-  def __init__(self, port, api):
-    self.host = urllib.request.urlopen('https://v4.ident.me').read().decode('utf8')
-    self.port = port
-    self.refresh = "http://{host}:{port}/{route}".format(host=self.host, port=self.port, route=api)
+def get_conf():
+    return {"host": urllib.request.urlopen('https://v4.ident.me').read().decode('utf8'), "port": 80, "route": "api"}
+    
+def give_me_the_refresh():
+    return "http://{host}:{port}/{route}".format(host=get_conf()["host"], port=get_conf()["port"], route=get_conf()["api"])
 
 def get_meme():
     #Uncomment these two lines and comment out the other url line if you want to use a specific meme subreddt
@@ -30,9 +30,7 @@ def index():
 
 # main driver function
 if __name__ == '__main__':
-
-    myApp=FlaskApp(80, "api")
  
     # run() method of Flask class runs the application
     # on the local development server.
-    app.run(host=myApp.host, port=myApp.port)
+    app.run(host=get_conf()["host"], port=get_conf()["port"])
