@@ -35,4 +35,4 @@ if __name__ == '__main__':
  
     # run() method of Flask class runs the application
     # on the local development server.
-    myApp.app.run(host=myApp.host, port=myApp.port)
+    app.run(host=myApp.host, port=myApp.port)
