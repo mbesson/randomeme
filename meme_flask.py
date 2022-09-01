@@ -16,7 +16,7 @@ def get_meme():
     subreddit = response["subreddit"]
     return meme_large, subreddit
 
-@app.route("/")
+@app.route("/api", , methods=['GET'])
 def index():
     meme_pic,subreddit = get_meme()
     return render_template("index.html", meme_pic=meme_pic, subreddit=subreddit)
