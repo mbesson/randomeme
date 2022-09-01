@@ -5,19 +5,13 @@ import requests
 import json
 import urllib.request
 
-app = Flask(__name__)
 
-def give_me_the_ip():
-    return urllib.request.urlopen('https://v4.ident.me').read().decode('utf8')
-
-def give_me_the_port():
-    return 80
-
-def give_me_the_route():
-    return "api"
-
-def give_me_the_refresh():
-    return "http://{host}:{port}/{route}".format(host=give_me_the_ip(), port=give_me_the_port(), route=give_me_the_route())
+class FlaskApp:
+  def __init__(self, port, api):
+    self.app = app = Flask(__name__)
+    self.host = urllib.request.urlopen('https://v4.ident.me').read().decode('utf8')
+    self.port = port
+    self.refresh = "http://{host}:{port}/{route}".format(host=self.host, port=self.port, route=api)
 
 def get_meme():
     #Uncomment these two lines and comment out the other url line if you want to use a specific meme subreddt
@@ -36,7 +30,9 @@ def index():
 
 # main driver function
 if __name__ == '__main__':
+
+    myApp=FlaskApp(80, "api")
  
     # run() method of Flask class runs the application
     # on the local development server.
-    app.run(host=give_me_the_ip(), port=give_me_the_port())
+    myApp.app.run(host=myApp.host, port=myApp.port)
