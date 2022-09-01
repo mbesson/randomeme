@@ -5,10 +5,10 @@ import requests
 import json
 import urllib.request
 
+app = Flask(__name__)
 
 class FlaskApp:
   def __init__(self, port, api):
-    self.app = app = Flask(__name__)
     self.host = urllib.request.urlopen('https://v4.ident.me').read().decode('utf8')
     self.port = port
     self.refresh = "http://{host}:{port}/{route}".format(host=self.host, port=self.port, route=api)
