@@ -11,7 +11,7 @@ def get_conf():
     return {"host": urllib.request.urlopen('https://v4.ident.me').read().decode('utf8'), "port": 80, "route": "api"}
     
 def give_me_the_refresh():
-    return "http://{host}:{port}/{route}".format(host=get_conf()["host"], port=get_conf()["port"], route=get_conf()["api"])
+    return "http://{host}:{port}/{route}".format(host=get_conf()["host"], port=get_conf()["port"], route=get_conf()["route"])
 
 def get_meme():
     #Uncomment these two lines and comment out the other url line if you want to use a specific meme subreddt
