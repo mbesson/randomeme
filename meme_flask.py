@@ -34,4 +34,9 @@ def index():
     meme_pic,subreddit = get_meme()
     return render_template("index.html", meme_pic=meme_pic, subreddit=subreddit, refresh_url=give_me_the_refresh())
 
-app.run(host=give_me_the_ip(), port=give_me_the_port())
+# main driver function
+if __name__ == '__main__':
+ 
+    # run() method of Flask class runs the application
+    # on the local development server.
+    app.run(host=give_me_the_ip(), port=give_me_the_port())
