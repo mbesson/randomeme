@@ -13,8 +13,11 @@ def give_me_the_ip():
 def give_me_the_port():
     return 80
 
+def give_me_the_route():
+    return "api"
+
 def give_me_the_refresh():
-    return "http://{host}:{port}/".format(host=give_me_the_ip(), port=give_me_the_port())
+    return "http://{host}:{port}/{route}".format(host=give_me_the_ip(), port=give_me_the_port(), route=give_me_the_route())
 
 def get_meme():
     #Uncomment these two lines and comment out the other url line if you want to use a specific meme subreddt
